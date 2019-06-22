@@ -54,20 +54,20 @@ public class Matrix {
 		return mStr;
 	}
 	
-//	public static void main(String args[])
-//	{
-//		//matrix 1
-//		ArrayList<Integer> al = new ArrayList();
-//		
-//		for(int i =1; i<7; i++)
-//		{
-//			al.add(i);
-//		}
-//		
-//		Matrix m = new Matrix (3,2, al);
-//		Matrix n = new Matrix (3,2, al);
-//		System.out.println(m.toString());
-//		System.out.println(n.toString());
-//		System.out.println(n.checkIfCompatible(m));
-//	}
+	public static void main(String args[])
+	{
+		//matrix 1
+		ArrayList<Integer> al = new ArrayList();
+		
+		for(int i =1; i<7; i++)
+		{
+			al.add(i);
+		}
+		
+		Matrix m = new Matrix (3,2, al);
+		Matrix n = new Matrix (3,2, al);
+		System.out.println(m.toString());
+		System.out.println(n.toString());
+		System.out.println(n.checkIfCompatible(m));
+	}
 }
