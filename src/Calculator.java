@@ -56,6 +56,16 @@ public class Calculator {
 		}
 		return null;
 	}
+	
+	public ArrayList<Integer> genRow(ArrayList<Integer> r, ArrayList<ArrayList<Integer>> c)
+	{
+		ArrayList<Integer> temp = new ArrayList();
+		int returnNumber = r.size();
+		for(int i=0; i<returnNumber; i++)
+		{
+			
+		}
+	}
 
 //	public static void main(String[] args) {
 //		
