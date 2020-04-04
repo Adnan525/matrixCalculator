@@ -57,14 +57,22 @@ public class Calculator {
 		return null;
 	}
 	
-	public ArrayList<Integer> genRow(ArrayList<Integer> r, ArrayList<ArrayList<Integer>> c)
+	public static ArrayList<Integer> genRow(ArrayList<Integer> r, ArrayList<ArrayList<Integer>> c)
 	{
 		ArrayList<Integer> temp = new ArrayList();
 		int returnNumber = r.size();
 		for(int i=0; i<returnNumber; i++)
 		{
+			ArrayList<Integer> currentColumn = c.get(i);
+			int val = 0;
+			for(int j = 0; j<r.size(); j++)
+			{
+				val+=r.get(j)*currentColumn.get(j);
+			}
+			temp.add(val);
 			
 		}
+		return temp;
 	}
 
 //	public static void main(String[] args) {

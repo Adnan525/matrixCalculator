@@ -20,6 +20,23 @@ public class Main {
 		System.out.println("Addition/Subtraction possible : "+ Plus.simpleAddition(m, n));
 		System.out.println(Plus.addition(m, n).toString());
 		System.out.println(Subtraction.subtract(m, n).toString());
+		
+		
+		//multiplication
+		//genrow
+		ArrayList<Integer> row = new ArrayList();
+		
+		for(int i=1; i<4; i++)
+		{
+			row.add(i);
+		}
+		ArrayList<ArrayList<Integer>> col = new ArrayList();
+		
+		for(int i=0; i<3; i++)
+		{
+			col.add(row);
+		}
+		System.out.println(Calculator.genRow(row, col).toString());
 	}
 
 }
