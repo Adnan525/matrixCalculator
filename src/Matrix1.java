@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Matrix {
+public class Matrix1 {
 	//constructor with r and c or,
 	//constructor with r,c and arrayList
 	
@@ -26,13 +26,13 @@ public class Matrix {
 		this.row = r;
 	}
 	
-	public Matrix(int r, int c)
+	public Matrix1(int r, int c)
 	{
 		this.setColumn(c);
 		this.setRow(r);
 	}
 	
-	public Matrix(int r, int c, ArrayList<Integer> v)
+	public Matrix1(int r, int c, ArrayList<Integer> v)
 	{
 		this.setColumn(c);
 		this.setRow(r);
@@ -42,7 +42,7 @@ public class Matrix {
 	}
 	
 	// pre multiply this to the given matrix
-	public boolean checkIfCompatible(Matrix m)
+	public boolean checkIfCompatible(Matrix1 m)
 	{
 		return (this.getColumn() == m.getRow()) ? true : false;
 	}

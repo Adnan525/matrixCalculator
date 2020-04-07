@@ -4,6 +4,7 @@ public class Main {
 	
 	public static void main(String args[])
 	{
+		System.out.println("Provide matrix1 row-wise and matrix2 column wise");
 		//matrix 1
 		ArrayList<Integer> al = new ArrayList();
 		
@@ -12,16 +13,16 @@ public class Main {
 			al.add(i);
 		}
 		
-		Matrix m = new Matrix (3,2, al);
-		Matrix n = new Matrix (3,2, al);
+		Matrix1 m = new Matrix1 (3,2, al);
+		Matrix1 n = new Matrix1 (3,2, al);
+		Matrix2 nCol = new Matrix2 (3,2, al);
 		System.out.println(m.toString());
 		System.out.println(n.toString());
+		System.out.println(nCol.toString());
 		System.out.println("Multiplication possible : "+ n.checkIfCompatible(m));
 		System.out.println("Addition/Subtraction possible : "+ Plus.simpleAddition(m, n));
 		System.out.println(Plus.addition(m, n).toString());
 		System.out.println(Subtraction.subtract(m, n).toString());
-		
-		
 		//multiplication
 		//genrow
 		ArrayList<Integer> row = new ArrayList();
@@ -36,7 +37,6 @@ public class Main {
 		{
 			col.add(row);
 		}
-		System.out.println(Calculator.genRow(row, col).toString());
 	}
 
 }
