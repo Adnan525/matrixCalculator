@@ -14,15 +14,15 @@ public class Main {
 		}
 		
 		Matrix1 m = new Matrix1 (3,2, al);
-		Matrix1 n = new Matrix1 (3,2, al);
-		Matrix2 nCol = new Matrix2 (3,2, al);
+		Matrix1 n = new Matrix1 (2,3, al);
+//		Matrix2 nCol = new Matrix2 (3,2, al);
 		System.out.println(m.toString());
 		System.out.println(n.toString());
-		System.out.println(nCol.toString());
+//		System.out.println(nCol.toString());
 		System.out.println("Multiplication possible : "+ n.checkIfCompatible(m));
 		System.out.println("Addition/Subtraction possible : "+ Plus.simpleAddition(m, n));
-		System.out.println(Plus.addition(m, n).toString());
-		System.out.println(Subtraction.subtract(m, n).toString());
+//		System.out.println(Plus.addition(m, n).toString());
+//		System.out.println(Subtraction.subtract(m, n).toString());
 		//multiplication
 		//genrow
 		ArrayList<Integer> row = new ArrayList();
@@ -37,6 +37,9 @@ public class Main {
 		{
 			col.add(row);
 		}
+		
+		//multiplication
+		System.out.println(Multiplication.multiply(m, n));
 	}
 
 }

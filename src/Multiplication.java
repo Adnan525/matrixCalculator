@@ -1,6 +1,38 @@
 import java.util.ArrayList;
 
 public class Multiplication {
+	public static Matrix1 multiply(Matrix1 m1, Matrix1 m2)
+	{
+		ArrayList<Integer> newMat = new ArrayList();
+		
+		int newMatrix = m1.getRow()*m2.getColumn();
+		int[] newMatrixValue = new int[newMatrix];
+		
+		//calculation
+		int m2No= 0; //can go up to m2Column
+		int m1No= 0; //increases by m1Column
+		for(int i=0; i<newMatrixValue.length; i++)
+		{
+			if(m2No>=m2.getColumn())
+			{
+				m2No = 0;
+				m1No = m1No+m1.getColumn();
+			}
+			//newMatrixValue[i]=m1.matrix.get(m1No) * m2.matrix.get(m2No) +m1.matrix.get(m1No+1) * m2.matrix.get(m2No+m2.getColumn());
+			int temp = 0;
+			int counter = 0;
+			for(int j = m1No; j < m1No + m1.getColumn(); j++)
+			{
+				temp+=m1.matrix.get(j) * m2.matrix.get(m2No+counter*(m2.getColumn()));
+				counter++;
+			}
+			newMatrixValue[i] = temp;
+			newMat.add(newMatrixValue[i]);
+			m2No++;
+		}
+		return new Matrix1(m1.getRow(), m2.getColumn(), newMat);
+		
+	}
 	
 //	//have to be in order
 //	public static Matrix multiply(Matrix m1, Matrix m2)
