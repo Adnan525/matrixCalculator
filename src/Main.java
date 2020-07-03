@@ -46,6 +46,9 @@ public class Main {
 		{
 			col.add(row);
 		}
+		System.out.println(m);
+		System.out.println();
+		System.out.println(Inverse.getTranspose(m));
 		
 		//multiplication
 //		System.out.println(Multiplication.multiply(m, n));
