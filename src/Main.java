@@ -21,8 +21,24 @@ public class Main {
 		al.add(2);
 		al.add(8);
 		al.add(7);
+		al.add(6);
+		al.add(1);
+		al.add(1);
+		al.add(4);
+		al.add(-2);
+		al.add(5);
+		al.add(2);
+		al.add(4);
+		al.add(-2);
+		al.add(5);
+		al.add(2);
+		al.add(4);
+		al.add(-2);
+		al.add(5);
+		al.add(2);
+		al.add(2);
 		
-		Matrix1 m = new Matrix1 (3,3, al);
+		Matrix1 m = new Matrix1 (5,5, al);
 //		Matrix1 n = new Matrix1 (2,3, al);
 //		Matrix2 nCol = new Matrix2 (3,2, al);
 //		System.out.println(m.toString());
@@ -52,7 +68,8 @@ public class Main {
 		
 		//multiplication
 //		System.out.println(Multiplication.multiply(m, n));
-		System.out.println(Inverse.getDeterminant(m));
+//		System.out.println(Inverse.getDeterminant(m));
+		System.out.println(Inverse.getSubMatrix(m, 7));
 	}
 
 }

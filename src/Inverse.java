@@ -53,7 +53,7 @@ public class Inverse {
 		return m.matrix.get(currIndex)*result;
 	}
 	
-	public static Matrix1 getTranspose(Matrix1 m)
+	public static Matrix1 getTranspose(Matrix1 m) //works for all
 	{
 		ArrayList<Integer> TransposeMatrix = new ArrayList();
 		for(int i=0; i<=m.getRow()-1; i++)
@@ -74,6 +74,58 @@ public class Inverse {
 			
 		}
 		return null;
+	}
+	public static Matrix1 getSubMatrix(Matrix1 m, int n)
+	{
+		int c = m.getColumn();
+		ArrayList<Integer> temp = m.matrix;
+		
+		//part 1
+		//backward
+		for(int i=n; i>=0; i-=c)
+		{
+			temp.set(i, null);
+		}
+		//forward
+		for(int i=n; i<=temp.size()-1; i+=c)
+		{
+			temp.set(i, null);
+		}
+		
+		//part 2
+		if(n%c==0) //n is at the beginning of  the column
+		{
+			for(int i=n; i<n+c-1; i++)
+			{
+				temp.set(i, null);
+			}
+		}
+		else if(n%c==c-1) //n is at the end
+		{
+			for(int i=n; i>=n-c+1; i--)
+			{
+				temp.set(i, null);
+			}
+		}
+		else //n is in the middle
+		{
+			for(int i=n-(n%c); i<=(n-(n%c))+c-1; i++) //refer to notes
+			{
+				temp.set(i, null);
+			}
+		}
+		
+		//removing null
+		ArrayList<Integer> result =  new ArrayList();
+		for(Integer i:temp)
+		{
+			if(i!=null)
+			{
+				result.add(i);
+			}
+		}
+		int newCol = (int)Math.sqrt(result.size());
+		return new Matrix1(newCol, newCol, result);
 	}
 	
 
