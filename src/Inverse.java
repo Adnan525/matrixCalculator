@@ -19,9 +19,15 @@ public class Inverse {
 	//only square matrix can have an inverse matrix
 	public static Integer getDeterminant(Matrix1 m) //get determinant of a 3x3 matrix only
 	{
-		Integer determinant = 0;
-		if(m.matrix.size()!=9)
+		
+		if(m.matrix.size()>9)
 			return null;
+		
+		//for 2x2 only
+		if(m.matrix.size()==4 || m.matrix.size()==1 )
+			return Inverse.getMinorDeterminant(m);
+		Integer determinant = 0;
+		
 		//confirmed a 3x3 matrix
 		for(int i = 0; i<3; i++)
 		{
@@ -147,9 +153,13 @@ public class Inverse {
 	}
 	public static Integer getMinorDeterminant(Matrix1 m) //works for 2x2 matrix
 	{
-		if(m.matrix.size()!=4)
+		//only 2 possibilities, either 1x1 or 2x2
+		if(m.matrix.size()==1)
+			return m.matrix.get(0);
+		else if(m.matrix.size()==4)
+			return m.matrix.get(0)*m.matrix.get(3)-m.matrix.get(1)*m.matrix.get(2);
+		else
 			return null;
-		return m.matrix.get(0)*m.matrix.get(3)-m.matrix.get(1)*m.matrix.get(2);
 	}
 	
 

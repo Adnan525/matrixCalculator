@@ -52,7 +52,7 @@ public class Main {
 		//multiplication
 		System.out.println(m);
 //		System.out.println();
-		System.out.println(Inverse.getTranspose(m));
+//		System.out.println(Inverse.getTranspose(m));
 		
 		//multiplication
 //		System.out.println(Multiplication.multiply(m, n));
