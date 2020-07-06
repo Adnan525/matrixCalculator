@@ -2,13 +2,19 @@ import java.util.ArrayList;
 
 public class Inverse {
 	
-//	public static Matrix1 getInverse(Matrix1 m)
-//	{
-//		int determinant = Inverse.getDeterminant(m);
-//		if(determinant == 0)
-//			return null; //inverse does not exist
-//		Matrix2 transpose = new Matrix2()
-//	}
+	public static Matrix3 getInverse(Matrix1 m)
+	{
+		ArrayList<Float> inverse = new ArrayList<>();
+		int determinant = Inverse.getDeterminant(m);
+		if(determinant == 0)
+			return null; //inverse does not exist
+		Matrix1 temp = Inverse.getAdjugate(Inverse.getTranspose(m));
+		for(Integer i:temp.matrix)
+		{
+			inverse.add((float)i/determinant);
+		}
+		return new Matrix3(m.getRow(), m.getColumn(), inverse);
+	}
 	
 	//only square matrix can have an inverse matrix
 	public static Integer getDeterminant(Matrix1 m) //get determinant of a 3x3 matrix only
@@ -66,66 +72,84 @@ public class Inverse {
 		}
 		return new Matrix1(m.getRow(), m.getColumn(), TransposeMatrix);
 	}
+	
 	public static Matrix1 getAdjugate(Matrix1 m)
 	{
-		ArrayList<Integer> AdjugateMatrix = new ArrayList();
+		final Matrix1 test = m;
+		ArrayList<Integer> adjugateMatrix = new ArrayList();
 		for(int i=0; i<m.matrix.size(); i++)
 		{
-			
+			if(i%2==1) //fixing the signs
+				adjugateMatrix.add(-1 * Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i)));
+			else
+				adjugateMatrix.add(Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i)));
 		}
-		return null;
+		return new Matrix1(m.getRow(),m.getColumn(), adjugateMatrix);
 	}
-	public static Matrix1 getSubMatrix(Matrix1 m, int n)
+	
+	
+	public static Matrix1 getSubMatrix(Matrix1 m, int n) //works for everything
 	{
 		int c = m.getColumn();
-		ArrayList<Integer> temp = m.matrix;
+		
+		ArrayList<Integer> temp = new ArrayList<>();
+		for(int i=0; i<m.matrix.size(); i++) //using this so the function won't change the main matrix that has been passed to it. 
+		{
+			temp.add(1); // add 1 to everything, if null required change to -1
+		}
 		
 		//part 1
 		//backward
 		for(int i=n; i>=0; i-=c)
 		{
-			temp.set(i, null);
+			temp.set(i, -1);
 		}
 		//forward
 		for(int i=n; i<=temp.size()-1; i+=c)
 		{
-			temp.set(i, null);
+			temp.set(i, -1);
 		}
 		
 		//part 2
 		if(n%c==0) //n is at the beginning of  the column
 		{
-			for(int i=n; i<n+c-1; i++)
+			for(int i=n; i<=n+c-1; i++)
 			{
-				temp.set(i, null);
+				temp.set(i, -1);
 			}
 		}
 		else if(n%c==c-1) //n is at the end
 		{
 			for(int i=n; i>=n-c+1; i--)
 			{
-				temp.set(i, null);
+				temp.set(i, -1);
 			}
 		}
 		else //n is in the middle
 		{
 			for(int i=n-(n%c); i<=(n-(n%c))+c-1; i++) //refer to notes
 			{
-				temp.set(i, null);
+				temp.set(i, -1);
 			}
 		}
 		
 		//removing null
 		ArrayList<Integer> result =  new ArrayList();
-		for(Integer i:temp)
+		for(int i=0; i<m.matrix.size(); i++)
 		{
-			if(i!=null)
+			if(temp.get(i) != -1)
 			{
-				result.add(i);
+				result.add(m.matrix.get(i));
 			}
 		}
 		int newCol = (int)Math.sqrt(result.size());
 		return new Matrix1(newCol, newCol, result);
+	}
+	public static Integer getMinorDeterminant(Matrix1 m) //works for 2x2 matrix
+	{
+		if(m.matrix.size()!=4)
+			return null;
+		return m.matrix.get(0)*m.matrix.get(3)-m.matrix.get(1)*m.matrix.get(2);
 	}
 	
 

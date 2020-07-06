@@ -17,16 +17,16 @@ public class temp{
 		return mVal;
 	}
 
-	public static void main(String args[])
-	{
-		//ArrayList<Integer> temp = convert("1.2.3.4.5.6.7.8");
-		//System.out.println(temp.get(0));
-		
-		String str = "1-2-3-4-5-6-7-8"; 
-        String[] arrOfStr = str.split("-", 0); 
-  
-        for (String a : arrOfStr) 
-            System.out.println(a);
-	}
+//	public static void main(String args[])
+//	{
+//		//ArrayList<Integer> temp = convert("1.2.3.4.5.6.7.8");
+//		//System.out.println(temp.get(0));
+//		
+//		String str = "1-2-3-4-5-6-7-8"; 
+//        String[] arrOfStr = str.split("-", 0); 
+//  
+//        for (String a : arrOfStr) 
+//            System.out.println(a);
+//	}
 
 }
