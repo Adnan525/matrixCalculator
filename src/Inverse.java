@@ -83,12 +83,36 @@ public class Inverse {
 	{
 		final Matrix1 test = m;
 		ArrayList<Integer> adjugateMatrix = new ArrayList();
-		for(int i=0; i<m.matrix.size(); i++)
+		boolean newRow = true;
+		for(int i=0; i<m.matrix.size(); i+=m.getColumn())
 		{
-			if(i%2==1) //fixing the signs
-				adjugateMatrix.add(-1 * Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i)));
+			//fixing the signs
+			if(newRow)
+			{
+				for(int j = 0; j<=m.getColumn()-1; j++)
+				{
+					if(j%2==0)
+						adjugateMatrix.add(Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i+j)));
+					else
+						adjugateMatrix.add(-1 * Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i+j)));
+				}
+				newRow = false;
+//				if(i%2==1) //fixing the signs
+//					adjugateMatrix.add(-1 * Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i)));
+//				else
+//					adjugateMatrix.add(Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i)));
+			}
 			else
-				adjugateMatrix.add(Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i)));
+			{
+				for(int j = 0; j<=m.getColumn()-1; j++)
+				{
+					if(j%2==0)
+						adjugateMatrix.add(-1 * Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i+j)));
+					else
+						adjugateMatrix.add(Inverse.getMinorDeterminant(Inverse.getSubMatrix(test, i+j)));
+				}
+				newRow = true;
+			}
 		}
 		return new Matrix1(m.getRow(),m.getColumn(), adjugateMatrix);
 	}
